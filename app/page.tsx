@@ -1,9 +1,9 @@
-import { Button } from "@/components/ui/button";
-
 export default function Home() {
   return (
-    <main className="flex min-h-screen items-center justify-center">
-      <Button>TurkBazaar Butonu</Button>
-    </main>
-  );
+    <div className="flex items-center justify-center h-screen">
+      <button className="bg-green-500 text-white px-6 py-3 rounded-lg">
+        Giriş Yap
+      </button>
+    </div>
+  )
 }
