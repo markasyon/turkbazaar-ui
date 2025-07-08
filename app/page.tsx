@@ -39,7 +39,7 @@ export default function AnaSayfa() {
 
       {/* ARAMA ve KATEGORİLER */}
       <main className="p-8">
-        <div className="max-w-4xl mx-auto text-center">
+        <div className="max-w-6xl mx-auto text-center">
           <h1 className="text-3xl font-bold mb-2">TurkBazaar&apos;a Hoş Geldiniz</h1>
           <p className="text-gray-600 mb-6">
             Türkiye&apos;nin yerli satıcılarını dünya ile buluşturan ticaret platformu.
@@ -82,27 +82,27 @@ export default function AnaSayfa() {
               </div>
             ))}
           </div>
-        </div>
 
-        {/* POPÜLER ÜRÜNLER */}
-        <div className="mt-12">
-          <h2 className="text-2xl font-bold text-center mb-6">Popüler Ürünler</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-            <UrunKarti
-              baslik="Organik Zeytinyağı"
-              aciklama="Ege'den taze sıkım naturel sızma yağ."
-              resim="/urun1.jpg"
-            />
-            <UrunKarti
-              baslik="Ahşap Oyuncak Seti"
-              aciklama="El yapımı, sağlıklı doğal ahşap oyuncaklar."
-              resim="/urun1.jpg"
-            />
-            <UrunKarti
-              baslik="Dekoratif Cam Vazo"
-              aciklama="Modern ev dekorasyonuna özel vazo."
-              resim="/urun1.jpg"
-            />
+          {/* ÖNE ÇIKAN ÜRÜNLER */}
+          <div className="mt-12">
+            <h2 className="text-2xl font-bold mb-4">Öne Çıkan Ürünler</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+              <UrunKarti
+                baslik="Organik Zeytinyağı"
+                resim="/urun1.jpg"
+                fiyat="₺150"
+              />
+              <UrunKarti
+                baslik="El Dokuması Halı"
+                resim="/urun2.jpg"
+                fiyat="₺3.200"
+              />
+              <UrunKarti
+                baslik="Ahşap Oyuncak Seti"
+                resim="/urun3.jpg"
+                fiyat="₺450"
+              />
+            </div>
           </div>
         </div>
       </main>
