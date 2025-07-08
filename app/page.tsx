@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
+import UrunKarti from '@/components/UrunKarti';
 
 export default function AnaSayfa() {
   const [lang, setLang] = useState("TR");
@@ -16,12 +17,8 @@ export default function AnaSayfa() {
           <span className="text-xl font-bold">TurkBazaar</span>
         </div>
         <div className="flex items-center gap-4">
-          <Link href="/giris-yap" className="hover:underline">
-            Giriş Yap
-          </Link>
-          <Link href="/kayit-ol" className="hover:underline">
-            Kayıt Ol
-          </Link>
+          <Link href="/giris-yap" className="hover:underline">Giriş Yap</Link>
+          <Link href="/kayit-ol" className="hover:underline">Kayıt Ol</Link>
           <select
             value={lang}
             onChange={(e) => setLang(e.target.value)}
@@ -84,6 +81,28 @@ export default function AnaSayfa() {
                 <p className="font-medium">{kategori}</p>
               </div>
             ))}
+          </div>
+        </div>
+
+        {/* POPÜLER ÜRÜNLER */}
+        <div className="mt-12">
+          <h2 className="text-2xl font-bold text-center mb-6">Popüler Ürünler</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            <UrunKarti
+              baslik="Organik Zeytinyağı"
+              aciklama="Ege'den taze sıkım naturel sızma yağ."
+              resim="/urun1.jpg"
+            />
+            <UrunKarti
+              baslik="Ahşap Oyuncak Seti"
+              aciklama="El yapımı, sağlıklı doğal ahşap oyuncaklar."
+              resim="/urun1.jpg"
+            />
+            <UrunKarti
+              baslik="Dekoratif Cam Vazo"
+              aciklama="Modern ev dekorasyonuna özel vazo."
+              resim="/urun1.jpg"
+            />
           </div>
         </div>
       </main>
