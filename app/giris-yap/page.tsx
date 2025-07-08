@@ -64,4 +64,14 @@ export default function GirisYapPage() {
               Giriş Yap
             </button>
           </form>
-          <p className="
+          <p className="text-center text-sm mt-4">
+            Hesabınız yok mu?{" "}
+            <Link href="/kayit-ol" className="text-green-700 font-medium hover:underline">
+              Kayıt Ol
+            </Link>
+          </p>
+        </div>
+      </main>
+    </div>
+  );
+}
