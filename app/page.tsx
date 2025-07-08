@@ -8,7 +8,7 @@ export default function AnaSayfa() {
   const [lang, setLang] = useState("TR");
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 flex flex-col justify-between">
       {/* ÜST ŞERİT */}
       <header className="bg-green-700 text-white px-6 py-4 flex justify-between items-center shadow">
         <div className="flex items-center gap-3">
@@ -87,6 +87,36 @@ export default function AnaSayfa() {
           </div>
         </div>
       </main>
+
+      {/* ALT BÖLÜM / FOOTER */}
+      <footer className="bg-green-800 text-white py-8 mt-10">
+        <div className="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div>
+            <h2 className="text-lg font-bold mb-2">Hakkımızda</h2>
+            <p className="text-sm text-gray-200">
+              TurkBazaar, yerli satıcıların ürünlerini hem Türkiye’de hem de dünyada sergileyebileceği modern bir B2B pazaryeridir.
+            </p>
+          </div>
+          <div>
+            <h2 className="text-lg font-bold mb-2">Bağlantılar</h2>
+            <ul className="text-sm text-gray-200 space-y-1">
+              <li><Link href="/giris-yap">Giriş Yap</Link></li>
+              <li><Link href="/kayit-ol">Kayıt Ol</Link></li>
+              <li><Link href="/iletisim">İletişim</Link></li>
+              <li><Link href="/sss">SSS</Link></li>
+            </ul>
+          </div>
+          <div>
+            <h2 className="text-lg font-bold mb-2">İletişim</h2>
+            <p className="text-sm text-gray-200">📞 +90 555 555 55 55</p>
+            <p className="text-sm text-gray-200">📧 info@turkbazaar.com.tr</p>
+            <p className="text-sm text-gray-200 mt-2">📍 Türkiye Merkez Ofis</p>
+          </div>
+        </div>
+        <div className="text-center text-sm text-gray-300 mt-6">
+          © 2025 TurkBazaar. Tüm hakları saklıdır.
+        </div>
+      </footer>
     </div>
   );
 }
