@@ -1,14 +1,12 @@
-// app/urun/[slug]/page.tsx
-
 import Image from 'next/image';
 
-type Props = {
+interface PageProps {
   params: {
     slug: string;
   };
-};
+}
 
-// Demo ürünler
+// Demo ürün listesi
 const demoUrunler = [
   {
     slug: 'organik-zeytinyagi',
@@ -33,15 +31,11 @@ const demoUrunler = [
   }
 ];
 
-export default function UrunDetayPage({ params }: Props) {
+export default function UrunDetayPage({ params }: PageProps) {
   const urun = demoUrunler.find((u) => u.slug === params.slug);
 
   if (!urun) {
-    return (
-      <div className="p-10 text-center text-red-600 text-xl">
-        Ürün bulunamadı!
-      </div>
-    );
+    return <div className="p-10 text-center text-red-600 text-xl">Ürün bulunamadı!</div>;
   }
 
   return (
