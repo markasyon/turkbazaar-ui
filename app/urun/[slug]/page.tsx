@@ -1,38 +1,38 @@
 import Image from 'next/image';
 
-interface PageProps {
+type Props = {
   params: {
     slug: string;
   };
-}
+};
 
-// Demo ürün listesi
-const demoUrunler = [
+// Demo ürünler
+const urunler = [
   {
     slug: 'organik-zeytinyagi',
     baslik: 'Organik Zeytinyağı',
     resim: '/urun1.jpg',
     fiyat: 150,
-    aciklama: 'Ege’nin doğal zeytinlerinden soğuk sıkım ile üretilmiştir.'
+    aciklama: 'Soğuk sıkım, tamamen doğal Ege zeytinyağı.'
   },
   {
     slug: 'el-dokumasi-hali',
     baslik: 'El Dokuması Halı',
     resim: '/urun2.jpg',
     fiyat: 3200,
-    aciklama: 'Anadolu motifleriyle süslenmiş tamamen el yapımı halı.'
+    aciklama: 'El yapımı, Anadolu motifli halı.'
   },
   {
     slug: 'ahsap-oyuncak-seti',
     baslik: 'Ahşap Oyuncak Seti',
     resim: '/urun3.jpg',
     fiyat: 450,
-    aciklama: 'Doğal ahşaptan yapılmış, sağlıklı ve eğitici oyuncak seti.'
+    aciklama: 'Sağlıklı doğal ahşap malzemeden üretilmiştir.'
   }
 ];
 
-export default function UrunDetayPage({ params }: PageProps) {
-  const urun = demoUrunler.find((u) => u.slug === params.slug);
+export default function UrunDetayPage({ params }: Props) {
+  const urun = urunler.find((u) => u.slug === params.slug);
 
   if (!urun) {
     return <div className="p-10 text-center text-red-600 text-xl">Ürün bulunamadı!</div>;
