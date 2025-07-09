@@ -1,18 +1,26 @@
+// app/urun/[slug]/page.tsx
+
+import { Metadata } from "next";
+
 type Props = {
   params: {
     slug: string;
   };
 };
 
-export default function UrunDetay({ params }: Props) {
-  const { slug } = params;
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  return {
+    title: `Ürün Detayı - ${params.slug}`,
+    description: "Ürün detay sayfası açıklaması",
+  };
+}
 
-  // DEMO veri - slug'a göre veri çekimi henüz eklenmedi
+export default function UrunDetay({ params }: Props) {
   const urun = {
-    baslik: "Örnek Ürün",
-    aciklama: "Bu ürünün açıklaması burada yer alır.",
-    fiyat: "₺150",
-    resim: "/urun.jpg",
+    baslik: "El Dokuması Halı",
+    aciklama: "Tamamen el işçiliği ile üretilmiş geleneksel halı.",
+    fiyat: "₺3.200",
+    resim: "/hali.jpg",
   };
 
   return (
@@ -24,8 +32,8 @@ export default function UrunDetay({ params }: Props) {
         className="w-full h-auto mb-4 rounded"
       />
       <p className="text-lg text-gray-700 mb-2">Fiyat: {urun.fiyat}</p>
-      <p className="text-gray-600">{urun.aciklama}</p>
-      <p className="mt-4 text-sm text-gray-400">Slug: {slug}</p>
+      <p className="text-gray-600 mb-2">{urun.aciklama}</p>
+      <p className="text-sm text-gray-400">Slug: {params.slug}</p>
     </div>
   );
 }
