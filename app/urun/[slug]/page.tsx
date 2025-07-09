@@ -3,11 +3,17 @@
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 
+type Urun = {
+  baslik: string;
+  fiyat: number;
+  resim: string;
+  aciklama: string;
+};
+
 export default function UrunDetay({ params }: { params: { slug: string } }) {
   const router = useRouter();
 
-  // Demo ürün verisi
-  const urunler: any = {
+  const urunler: Record<string, Urun> = {
     'organik-zeytinyagi': {
       baslik: 'Organik Zeytinyağı',
       fiyat: 150,
