@@ -1,57 +1,62 @@
+// app/urun/[slug]/page.tsx
 'use client';
 
-import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 
-type Urun = {
-  baslik: string;
-  fiyat: number;
-  resim: string;
-  aciklama: string;
+type PageProps = {
+  params: {
+    slug: string;
+  };
 };
 
-export default function UrunDetay({ params }: { params: { slug: string } }) {
-  const router = useRouter();
+// Demo ürün verisi (normalde bir API'den gelir)
+const demoUrunler = [
+  {
+    slug: 'organik-zeytinyagi',
+    baslik: 'Organik Zeytinyağı',
+    resim: '/urun1.jpg',
+    fiyat: 150,
+    aciklama: 'Ege’nin doğal zeytinlerinden soğuk sıkım ile üretilmiştir.'
+  },
+  {
+    slug: 'el-dokumasi-hali',
+    baslik: 'El Dokuması Halı',
+    resim: '/urun2.jpg',
+    fiyat: 3200,
+    aciklama: 'Anadolu motifleriyle süslenmiş tamamen el yapımı halı.'
+  },
+  {
+    slug: 'ahsap-oyuncak-seti',
+    baslik: 'Ahşap Oyuncak Seti',
+    resim: '/urun3.jpg',
+    fiyat: 450,
+    aciklama: 'Doğal ahşaptan yapılmış, sağlıklı ve eğitici oyuncak seti.'
+  }
+];
 
-  const urunler: Record<string, Urun> = {
-    'organik-zeytinyagi': {
-      baslik: 'Organik Zeytinyağı',
-      fiyat: 150,
-      resim: '/urun1.jpg',
-      aciklama: 'Ege bölgesinden %100 doğal zeytinyağı.'
-    },
-    'el-dokumasi-hali': {
-      baslik: 'El Dokuması Halı',
-      fiyat: 3200,
-      resim: '/urun2.jpg',
-      aciklama: 'El yapımı Anadolu halısı, 2x3 metre.'
-    },
-    'ahsap-oyuncak-seti': {
-      baslik: 'Ahşap Oyuncak Seti',
-      fiyat: 450,
-      resim: '/urun3.jpg',
-      aciklama: 'Doğal malzemeden yapılmış sağlıklı oyuncak seti.'
-    }
-  };
-
-  const urun = urunler[params.slug];
+export default function UrunDetayPage({ params }: PageProps) {
+  const urun = demoUrunler.find((u) => u.slug === params.slug);
 
   if (!urun) {
-    return <div className="p-8 text-center text-red-500">Ürün bulunamadı.</div>;
+    return (
+      <div className="p-10 text-center text-red-600 text-xl">
+        Ürün bulunamadı!
+      </div>
+    );
   }
 
   return (
-    <div className="p-8 max-w-4xl mx-auto">
-      <h1 className="text-2xl font-bold mb-4">{urun.baslik}</h1>
-      <Image src={urun.resim} alt={urun.baslik} width={400} height={300} className="mb-4 rounded" />
-      <p className="text-gray-700 text-lg mb-2">💰 {urun.fiyat.toLocaleString()} ₺</p>
-      <p className="text-gray-600 mb-6">{urun.aciklama}</p>
-      <button
-        className="bg-green-700 text-white px-6 py-2 rounded hover:bg-green-800"
-        onClick={() => router.push('/giris-yap')}
-      >
-        Teklif Ver
-      </button>
+    <div className="max-w-4xl mx-auto p-8">
+      <h1 className="text-3xl font-bold mb-4">{urun.baslik}</h1>
+      <Image
+        src={urun.resim}
+        alt={urun.baslik}
+        width={500}
+        height={500}
+        className="rounded shadow mb-6"
+      />
+      <p className="text-lg text-gray-700 mb-2">💰 Fiyat: ₺{urun.fiyat}</p>
+      <p className="text-gray-600">{urun.aciklama}</p>
     </div>
   );
 }
