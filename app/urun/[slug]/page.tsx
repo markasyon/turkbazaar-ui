@@ -1,15 +1,14 @@
 // app/urun/[slug]/page.tsx
-'use client';
 
 import Image from 'next/image';
 
-type PageProps = {
+type Props = {
   params: {
     slug: string;
   };
 };
 
-// Demo ürün verisi (normalde bir API'den gelir)
+// Demo ürünler
 const demoUrunler = [
   {
     slug: 'organik-zeytinyagi',
@@ -34,7 +33,7 @@ const demoUrunler = [
   }
 ];
 
-export default function UrunDetayPage({ params }: PageProps) {
+export default function UrunDetayPage({ params }: Props) {
   const urun = demoUrunler.find((u) => u.slug === params.slug);
 
   if (!urun) {
